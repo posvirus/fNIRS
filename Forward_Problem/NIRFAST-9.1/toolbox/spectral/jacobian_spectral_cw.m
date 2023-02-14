@@ -124,15 +124,15 @@ else
 end
 
 %% Assign outputs
-data.paa = zeros(length(mesh.link),nwv*2);
+data.paa = zeros(size(mesh.link,1),nwv*2);
 data.wv = wv_array;
 J = [];
 for i = 1:nwv
     ndata = sum(mesh.link(:,i+2)~=0);
     J_small = zeros(ndata,nnodes*m);
     
-    %data_tmp(i).paa(end+1:ndata,:) = NaN;
-    %data.paa(:,i*2-1:i*2) = data_tmp(i).paa;
+    data_tmp(i).paa(end+1:ndata,:) = NaN;
+    data.paa(:,i*2-1:i*2) = data_tmp(i).paa;
     
     J_mua = J_tmp(i).complete;
     %J_kappa = J_tmp(i).complete(:,1:nnodes);
