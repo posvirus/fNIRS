@@ -18,7 +18,7 @@ function data = load_data(fn, wv_array)
 %
 % xphase   xamplitude   flphase   flamplitude   mphase   mamplitude
 
-data.name = 'nirfast';
+data.name = 'nirfast'; data.wv=[];
 
 if ischar(fn) ~= 0
     
@@ -106,6 +106,7 @@ if ischar(fn) ~= 0
     elseif isempty(strfind(test,'w')) == 0
         S = char(text);
         wloc = strfind(S,'w');
+        data.wv=zeros(1,numel(wloc)-1);
         for i=1:1:numel(wloc)-1
             data.wv(i) = str2num(strtrim(S(wloc(i)+1:wloc(i+1)-1)));
         end
